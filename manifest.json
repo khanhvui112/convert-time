@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Convert Time",
+  "version": "1.0.0",
+  "description": "Convert Time",
+  "icons": {
+    "128": "icons/icon_128.png",
+    "48": "icons/icon_48.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Convert Time"
+  },
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["storage", "activeTab", "contextMenus", "tabs", "storage", "cookies"],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "content_scripts": [
+    {
+      "css": [
+        "css/style.css",
+        "css/font-awesome.min.css",
+        "css/font-awesome.css"
+      ],
+      "matches": ["<all_urls>"],
+      "run_at": "document_idle",
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
